@@ -13,13 +13,42 @@ An AI-powered CLI tool that generates custom YouTube Music playlists using Claud
 ## Prerequisites
 
 - Python 3.8 or higher
-- pip (Python package installer)
+- `uv` (recommended) or `pip` for package management
 - A Claude API key
 - YouTube Music account
 
 ## Installation
 
-### Option 1: Install from source
+### Option 1: Using uv (recommended)
+
+[uv](https://github.com/astral-sh/uv) is a fast Python package and project manager.
+
+1. Install uv if you haven't already:
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+2. Navigate to the project directory:
+```bash
+cd clidj
+```
+
+3. Install the project:
+```bash
+uv pip install -e .
+```
+
+4. Run the tool:
+```bash
+clidj
+```
+
+Or run directly without installing:
+```bash
+uv run clidj
+```
+
+### Option 2: Using pip
 
 1. Clone or navigate to this directory:
 ```bash
@@ -33,7 +62,7 @@ pip install -e .
 
 This will install the `clidj` command globally.
 
-### Option 2: Install dependencies only
+### Option 3: Install dependencies only
 
 If you prefer to run directly without installing:
 ```bash
@@ -57,8 +86,12 @@ The tool will prompt you for this on first run and store it in `~/.clidjrc`.
 
 You need to set up YouTube Music API authentication:
 
-1. Make sure ytmusicapi is installed (it's included in requirements.txt):
+1. Make sure ytmusicapi is installed (it's included as a dependency):
 ```bash
+# With uv
+uv pip install ytmusicapi
+
+# Or with pip
 pip install ytmusicapi
 ```
 
@@ -80,11 +113,13 @@ For detailed instructions, see: https://ytmusicapi.readthedocs.io/en/stable/setu
 Run the tool:
 
 ```bash
+# If installed globally
 clidj
-```
 
-Or if not installed globally:
-```bash
+# With uv (without installing)
+uv run clidj
+
+# Or directly with Python
 python -m clidj
 ```
 
