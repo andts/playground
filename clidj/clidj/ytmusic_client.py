@@ -17,7 +17,8 @@ class YouTubeMusicClient:
     """Client for interacting with YouTube Music API."""
 
     def __init__(self, auth_path: str):
-        self.ytmusic = YTMusic(auth_path)
+        # For OAuth authentication, use oauth_credentials parameter
+        self.ytmusic = YTMusic(oauth_credentials=auth_path)
 
     def create_playlist(self, name: str, description: str) -> str:
         """Create a new playlist and return its ID."""
