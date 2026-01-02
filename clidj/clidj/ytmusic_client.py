@@ -1,6 +1,6 @@
 from typing import List, Optional, Dict
 from ytmusicapi import YTMusic
-from .claude_client import Track
+from clidj.claude_client import Track
 
 
 class SearchResult:

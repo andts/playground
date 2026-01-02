@@ -5,9 +5,9 @@ CLI DJ - AI-Powered YouTube Music Playlist Generator
 
 import sys
 from pathlib import Path
-from .config import Config
-from .claude_client import ClaudeClient
-from .ytmusic_client import YouTubeMusicClient
+from clidj.config import Config
+from clidj.claude_client import ClaudeClient
+from clidj.ytmusic_client import YouTubeMusicClient
 
 
 YTMUSIC_SETUP_INSTRUCTIONS = """
