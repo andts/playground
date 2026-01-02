@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clidj"
+version = "1.0.0"
+description = "AI-powered CLI tool to generate YouTube Music playlists using Claude"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "ISC"}
+keywords = ["youtube-music", "playlist", "claude", "ai", "cli"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "anthropic>=0.39.0",
+    "ytmusicapi>=1.8.0",
+]
+
+[project.scripts]
+clidj = "clidj.__main__:main"
