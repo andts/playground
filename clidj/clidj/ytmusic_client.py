@@ -1,4 +1,6 @@
 from typing import List, Optional, Dict
+import json
+from pathlib import Path
 from ytmusicapi import YTMusic
 from clidj.claude_client import Track
 
@@ -17,8 +19,21 @@ class YouTubeMusicClient:
     """Client for interacting with YouTube Music API."""
 
     def __init__(self, auth_path: str):
-        # For OAuth authentication, use oauth_credentials parameter
-        self.ytmusic = YTMusic(oauth_credentials=auth_path)
+        # Validate that the auth file exists
+        auth_file = Path(auth_path)
+        if not auth_file.exists():
+            raise FileNotFoundError(f"Authentication file not found: {auth_path}")
+
+        # Try to load and validate the JSON file
+        try:
+            with open(auth_file, 'r') as f:
+                auth_data = json.load(f)
+        except json.JSONDecodeError as e:
+            raise ValueError(f"Invalid JSON in authentication file: {e}")
+
+        # Initialize YTMusic with OAuth authentication
+        # Pass the file path - ytmusicapi will handle loading it
+        self.ytmusic = YTMusic(auth_path)
 
     def create_playlist(self, name: str, description: str) -> str:
         """Create a new playlist and return its ID."""
